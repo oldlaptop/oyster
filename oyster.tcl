@@ -68,7 +68,12 @@ namespace eval ttk::theme::oyster {
 
 	variable font [font create -family "DejaVu Serif" -size 9]
 
-	ttk::style theme create oyster -parent clam -settings {
+	# Don't unconditionally create the theme; it's annoying when testing.
+	if {"oyster" ni [ttk::style theme names]} {
+		ttk::style theme create oyster -parent clam
+	}
+
+	ttk::style theme settings oyster {
 
 		ttk::style configure "." \
 			-background $colors(-frame) \

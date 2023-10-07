@@ -52,18 +52,20 @@ namespace eval ttk::theme::oyster {
 
 	variable colors
 	array set colors {
-		-disabledfg           "#d0cac4"
+		-disabledfg           "#e8dcce"
 		-frame                "#d9ccbb"
 		-window               "#fef1e1"
-		-dark                 "#d9ccbb"
-		-darker               "#b9ab9a"
-		-darkest              "#998b7a"
-		-lighter              "#ded1c1"
+		-dark                 "#c1b5a7"
+		-darker               "#9c9082"
+		-darkest              "#72675b"
+		-lighter              "#f1e1d1"
 		-lightest             "#fef1e1"
 		-selectbg             "#2f8c3c"
 		-selectfg             "#fef1e1"
 		-altindicator         "#2f8c3c"
 		-disabledaltindicator "#a09184"
+		-highlight            "#43c855"
+		-highdark             "#24662b"
 	}
 
 	variable font [font create -family "DejaVu Serif" -size 9]
@@ -131,12 +133,12 @@ namespace eval ttk::theme::oyster {
 		;
 
 		ttk::style configure TCheckbutton \
-			-indicatorbackground "#fef1e1" \
+			-indicatorbackground $colors(-window) \
 			-indicatormargin {1 1 4 1} \
 			-padding 2 \
 		;
 		ttk::style configure TRadiobutton \
-			-indicatorbackground "#fef1e1" \
+			-indicatorbackground $colors(-window) \
 			-indicatormargin {1 1 4 1} \
 			-padding 2 \
 		;
@@ -166,8 +168,8 @@ namespace eval ttk::theme::oyster {
 				readonly $colors(-frame) \
 			] \
 			-bordercolor [list focus $colors(-selectbg)] \
-			-lightcolor [list focus "#43c855"] \
-			-darkcolor [list focus "#308a3b"] \
+			-lightcolor [list focus $colors(-highlight)] \
+			-darkcolor [list focus $colors(-highdark)] \
 		;
 
 		ttk::style configure TCombobox \
@@ -185,17 +187,26 @@ namespace eval ttk::theme::oyster {
 				readonly $colors(-frame)
 			] \
 			-foreground [list {readonly focus} $colors(-selectfg)] \
-			-arrowcolor [list disabled $colors(-disabledfg)]
+			-arrowcolor [list disabled $colors(-disabledfg)] \
+			-bordercolor [list focus $colors(-selectbg)] \
+			-lightcolor [list focus $colors(-highlight)] \
+			-darkcolor [list focus $colors(-highdark)] \
+		;
 		ttk::style configure ComboboxPopdownFrame \
 			-relief solid -borderwidth 1
 
 		ttk::style configure TSpinbox \
 			-arrowsize 10 \
 			-padding {2 0 10 0} \
-			-fieldbackground $colors(-window)
+			-fieldbackground $colors(-window) \
+		;
 		ttk::style map TSpinbox \
 			-fieldbackground [list  readonly $colors(-frame)] \
-			-arrowcolor [list disabled $colors(-disabledfg)]
+			-arrowcolor [list disabled $colors(-disabledfg)] \
+			-bordercolor [list focus $colors(-selectbg)] \
+			-lightcolor [list focus $colors(-highlight)] \
+			-darkcolor [list focus $colors(-highdark)] \
+		;
 
 		ttk::style configure TNotebook.Tab -padding {6 2 6 2}
 		ttk::style map TNotebook.Tab \
@@ -223,7 +234,11 @@ namespace eval ttk::theme::oyster {
 			-borderwidth 2 -relief raised \
 		;
 
-		ttk::style configure TProgressbar -background $colors(-frame)
+		ttk::style configure TProgressbar \
+			-background $colors(-selectbg) \
+			-lightcolor $colors(-highlight) \
+			-darkcolor $colors(-highdark) \
+		;
 
 		ttk::style configure Sash -sashthickness 6 -gripcount 10
 	}

@@ -14,6 +14,7 @@ the full experience, try the following in ~/.config/fontconfig/fonts.conf:
 ```
 
 With the demo code at <https://wiki.tcl-lang.org/page/List+of+ttk+Themes>
-you should see something like:
+(bundled here as demottk.tcl, plumbed up to `make test`) you should see
+something like:
 
 ![demo screenshot](demo.png)

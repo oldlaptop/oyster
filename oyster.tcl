@@ -218,7 +218,10 @@ namespace eval ttk::theme::oyster {
 		# Treeview:
 		ttk::style configure Heading \
 			-font TkHeadingFont -relief raised -padding {3}
-		ttk::style configure Treeview -background $colors(-window)
+		ttk::style configure Treeview \
+			-background $colors(-window) \
+			-fieldbackground $colors(-window) \
+		;
 		ttk::style map Treeview \
 			-background [list \
 				disabled $colors(-frame) \

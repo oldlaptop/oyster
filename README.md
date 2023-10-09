@@ -18,3 +18,15 @@ With the demo code at <https://wiki.tcl-lang.org/page/List+of+ttk+Themes>
 something like:
 
 ![demo screenshot](demo.png)
+
+Unthemed widgets (in particular [text] and [canvas]) will still be black-on-
+white by default without further configuration. I recommend something like
+the following in ~/.Xresources (or otherwise added to the resource database):
+
+```
+*TkTheme: oyster
+*background: #fef1e1
+```
+
+This will of course also affect many Xt and motif applications; I consider
+that a feature.
